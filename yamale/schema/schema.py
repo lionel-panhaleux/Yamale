@@ -67,8 +67,6 @@ class Schema(object):
         try:  # Pull value out of data. Data can be a map or a list/sequence
             data_item = data[key]
         except KeyError:  # Oops, that field didn't exist.
-            if not validator.is_optional:
-                import ipdb; ipdb.set_trace()
             if validator.default is not None:
                 data_item = data[key] = validator.default
             elif validator.is_optional:  # Optional? Who cares.
